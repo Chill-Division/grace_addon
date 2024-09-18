@@ -2,7 +2,7 @@ FROM debian:stable-slim
 
 # Install packages
 RUN apt-get update && \
-    apt-get install -y nginx php8.2-fpm php8.2-mysql mariadb-server && \
+    apt-get install -y git nginx php8.2-fpm php8.2-mysql mariadb-server && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -10,8 +10,8 @@ RUN apt-get update && \
 RUN mkdir -p /var/www/html /data/db /etc/nginx/conf.d
 
 # Copy website and configuration files
-COPY GRACe/ /var/www/html/
-COPY GRACe/grace_schema.sql /tmp/
+RUN git clone https://github.com/Chill-Division/GRACe.git /var/www/html/GRACe
+COPY /var/www/html/GRACe/grace_schema.sql /tmp/
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY run.sh /run.sh
 
