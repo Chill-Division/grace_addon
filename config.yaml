@@ -1,0 +1,18 @@
+---
+name: GRACe Portal
+version: dev
+slug: grace_portal
+description: GRACe Portal add-on for Home Assistant
+url: https://github.com/Chill-Division/GRACe_addon
+codenotary: josiah@chilldivision.co.nz
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armv7
+options:
+  log_level: info
+  seconds_between_quotes: 5
+schema:
+  log_level: list(trace|debug|info|notice|warning|error|fatal)
+  seconds_between_quotes: int(1,120)
